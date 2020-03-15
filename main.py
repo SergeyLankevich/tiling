@@ -24,6 +24,7 @@ second_color = get_color_choice().capitalize()
 number_of_hexagons = get_num_hexagons()
 side_length = 500 / (1.5 * number_of_hexagons)
 
+
 def draw_hex(hex_num):
     for i in range(6):
         forward(side_length)
