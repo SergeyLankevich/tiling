@@ -1,4 +1,4 @@
-from local import *
+from ru_local import *
 from turtle import *
 from math import *
 colors = ['Green', 'Blue', 'Yellow', 'Black', 'Red', 'Maroon']
@@ -25,13 +25,13 @@ number_of_hexagons = get_num_hexagons()
 side_length = 500 / (1.5 * number_of_hexagons)
 
 
-def draw_hex(hex_num):
+def draw_hex():
     for i in range(6):
         forward(side_length)
         right(60)
 
 
-def draw_line(hex_num):
+def draw_line_even(hex_num):
     for hexagon in range(hex_num):
         pendown()
         left(90)
@@ -39,6 +39,24 @@ def draw_line(hex_num):
             color('black', second_color)
         elif hexagon % 2 == 1:
             color('black', first_color)
+        begin_fill()
+        draw_hex(hex_num)
+        end_fill()
+        right(90)
+        penup()
+        forward(sin(radians(60)) * 2 * side_length)
+    backward(2 * side_length * (hex_num - 1))
+
+
+
+def draw_line_odd(hex_num):
+    for hexagon in range(hex_num):
+        pendown()
+        left(90)
+        if hexagon % 2 == 0:
+            color('black', first_color)
+        elif hexagon % 2 == 1:
+            color('black', second_color)
         begin_fill()
         draw_hex(hex_num)
         end_fill()
